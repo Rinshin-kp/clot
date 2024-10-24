@@ -1,3 +1,4 @@
+import 'package:clot/agepage.dart';
 import 'package:clot/resetpage.dart';
 import 'package:clot/signpage.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     height=MediaQuery.of(context).size.height;
     return MaterialApp(
-      home: Resetpage(),
+      home:Agepage (),
       debugShowCheckedModeBanner: false,
     );
   }
