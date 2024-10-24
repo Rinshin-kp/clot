@@ -13,7 +13,6 @@ class _HoddiepageState extends State<Hoddiepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(IconConstant.arrow),
       ),
     );
   }

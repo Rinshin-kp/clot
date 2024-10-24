@@ -6,4 +6,7 @@ class IconConstant{
   static const google="asset/icons/Wrapper.svg";
   static const arrow="assets/arrowdown2.png";
   static const back="assets/Frame 17.png";
+  static const facebook="assets/Facebook - png 0.png";
+  static const apple="Apple svg.png";
+
 }

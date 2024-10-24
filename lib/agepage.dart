@@ -97,7 +97,6 @@ class _AgepageState extends State<Agepage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: ColorConstant.ten
-
         ),
         child: Center(child: Text("Finish",
         style: TextStyle(
