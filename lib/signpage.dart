@@ -97,6 +97,7 @@ class _SignpageState extends State<Signpage> {
                        borderRadius: BorderRadius.circular(width*0.02),
                        borderSide:BorderSide(
                            color: ColorConstant.thirdColor
+
                        )
                    ),
 
