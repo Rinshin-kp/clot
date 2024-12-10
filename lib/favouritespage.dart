@@ -1,73 +1,70 @@
+import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
 import 'package:flutter/material.dart';
 
-import 'constant/colorconstant.dart';
 import 'main.dart';
 
-class Hoddiepage extends StatefulWidget {
-  const Hoddiepage({super.key});
+class Favouritespage extends StatefulWidget {
+  const Favouritespage({super.key});
 
   @override
-  State<Hoddiepage> createState() => _HoddiepageState();
+  State<Favouritespage> createState() => _FavouritespageState();
 }
 
-class _HoddiepageState extends State<Hoddiepage> {
-  bool love=false;
-  @override
-  List hoodies=[
+class _FavouritespageState extends State<Favouritespage> {
+  List favourites=[
     {
-      "img":ImageConstant.hoodi3,
-      "text":"Mens  pullover Hoo...",
-      "price":"\$ 100.00",
-    },{
-      "img":ImageConstant.hoodi2,
-      "text":" fleece pullover Hoo...",
-      "price":"\$ 150.97",
-    },{
-      "img":ImageConstant.hoodi4,
-      "text":" fleece skate Hoodie",
-      "price":"\$ 110.00",
-    },{
-      "img":ImageConstant.hoodi1,
-      "text":"Max cirro mens sildes ",
-      "price":"\$ 55.00",
-    },{
-      "img":ImageConstant.hoodi5,
-      "text":"Men Monogram Hoodie ",
-      "price":"\$ 52.97",
-    },{
-      "img":ImageConstant.hoodi6,
-      "text":"Men pullover Basketball ",
-      "price":"\$ 105.00",
+     "img":ImageConstant.rectangle,
+      "text":"NikeFuel Pack", "price":"\$ 32.00",
+  },
+    {
+      "img":ImageConstant.rectangle1,
+      "text":"Nike show X Rush ","price":"\$ 204",
     },
-    
+    {
+      "img":ImageConstant.rectangle2,
+      "text":"Men's Tshirt ","price":"\$ 45.00",
+    },
+    {
+      "img":ImageConstant.rectangle3,
+      "text":"Men's Skate Tshirt ","price":"\$ 4.00",
+    },
+    {
+      "img":ImageConstant.rectangle4,
+      "text":"Men's back Tshirt ","price":"\$ 3.00",
+    },{
+      "img":ImageConstant.rectangle5,
+      "text":"Men's vintage Tshirt ","price":"\$ 6.00",
+    },
   ];
+  bool love=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: AppBar(
-  leading: Icon(Icons.arrow_back_ios_new),
-),
+      backgroundColor: ColorConstant.secondColor,
+      appBar: AppBar(
+        backgroundColor: ColorConstant.secondColor,
+        leading: Icon(Icons.arrow_back_ios_new),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(right:width*0.5),
-              child: Text("Hoodies(240)",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: width*0.05
+              padding:  EdgeInsets.all(width*0.1),
+              child: Center(child: Text("Favourites(12)",
+                style: TextStyle(
+                  fontSize: width*0.06,
+                  fontWeight: FontWeight.w600
+                ),
+              )
               ),
-              ),
-            ),
-            SizedBox(height:height*0.05 ,),
-            GridView.builder(
-              itemCount:hoodies.length,
+            ), GridView.builder(
+              itemCount:favourites.length,
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),
               gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: height*0.02,
+                  mainAxisSpacing: height*0.06,
                   crossAxisSpacing: width*0.04,
                   mainAxisExtent: width*1
               ),
@@ -78,22 +75,21 @@ appBar: AppBar(
                     Stack(
                         children:[
                           Container(
-                            height: height*0.47,
+                            height: height*0.44,
                             width: width*0.6,
                             decoration: BoxDecoration(
                                 color: ColorConstant.nineth,
                                 borderRadius: BorderRadius.circular(width*0.04),
-                                image: DecorationImage(image: AssetImage(hoodies[index]["img"]),
-                                )
-                            ),
+                                image: DecorationImage(image: AssetImage(favourites[index]["img"]),
+                                )),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(hoodies[index]["text"],
+                                Text(favourites[index]["text"],
                                   style: TextStyle(
                                       fontSize: width*0.04
                                   ),),
-                                Text("${hoodies[index]['price']}",
+                                Text("${favourites[index]['price']}",
                                   style: TextStyle(
                                       fontSize: width*0.05,
                                       fontWeight: FontWeight.w600
@@ -102,7 +98,7 @@ appBar: AppBar(
                             ),
                           ),
                           Positioned(
-                            right:width*0.04,
+                            right:width*0.03,
                             top: height*0.02,
                             child:InkWell(
                               onTap: () {
@@ -113,6 +109,7 @@ appBar: AppBar(
                               child: Icon(Icons.favorite,
                                 color: love?ColorConstant.primaryColor:ColorConstant.red,
                               ),
+
                             ),
                           ),
                         ]
@@ -121,9 +118,9 @@ appBar: AppBar(
                 );
               },
             )],
-        ),
-      )
-      );
 
+        ),
+      ),
+    );
   }
 }
