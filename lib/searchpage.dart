@@ -16,10 +16,11 @@ class _SearchpageState extends State<Searchpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false ,
       backgroundColor: ColorConstant.secondColor,
+      resizeToAvoidBottomInset: false ,
       appBar: AppBar(
         leading: Icon(Icons.arrow_back_ios_outlined),
+        backgroundColor: ColorConstant.secondColor,
       ),
       body: Column(
         children: [
@@ -27,7 +28,7 @@ class _SearchpageState extends State<Searchpage> {
         padding:  EdgeInsets.all(width*0.1),
         child: Container(
         height: height*0.06,
-          width: width*0.9,
+          width: width*1,
           child: TextFormField(
             controller: searchcontroller,
             decoration: InputDecoration(
@@ -55,7 +56,7 @@ class _SearchpageState extends State<Searchpage> {
               image: DecorationImage(image: AssetImage(ImageConstant.search))
             ),
           ),
-          Text(" Sorry ,We couldn't find any\n Matching result for your \n Search.",
+          Text(" Sorry ,We couldn't find any\n Matching result for your \n              Search.",
             style: TextStyle(
               fontSize: width*0.06
             ),

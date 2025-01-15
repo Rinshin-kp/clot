@@ -33,7 +33,7 @@ class _EmptypageState extends State<Emptypage> {
           SizedBox(height: height*0.06,),
           Text("Your cart is empty",
             style: TextStyle(
-              fontSize: width*0.09
+              fontSize: width*0.07
             ),
           ),
           SizedBox(height: height*0.04),
@@ -47,7 +47,7 @@ class _EmptypageState extends State<Emptypage> {
             child: Center(
               child: Text("Explore Categories",
                 style: TextStyle(
-                  fontSize: width*0.06,
+                  fontSize: width*0.05,
                   color: ColorConstant.secondColor
                 ),
               ),

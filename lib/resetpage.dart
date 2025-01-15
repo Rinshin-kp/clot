@@ -1,6 +1,7 @@
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
 import 'package:clot/main.dart';
+import 'package:clot/signpage.dart';
 import 'package:flutter/material.dart';
 
 class Resetpage extends StatefulWidget {
@@ -27,29 +28,35 @@ class _ResetpageState extends State<Resetpage> {
               ),
             ),
           ),
-          SizedBox(height: height*0.04,),
-          Text("We Send You an Email To Reset ",
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: width*0.05
-          ),),
-          Center(child: Text("Your Password.",
-          style: TextStyle(
-            fontWeight: FontWeight.w700,fontSize: width*0.05
-          ),)),
-          SizedBox(height: height*0.02,),
-          Container(
-            height: height*0.06,
+             SizedBox(height: height*0.04,),
+               Text("We Send You an Email To Reset ",
+                 style: TextStyle(
+                fontWeight: FontWeight.w700,
+                  fontSize: width*0.05
+                  ),),
+                 Center(child: Text("Your Password.",
+                 style: TextStyle(
+                fontWeight: FontWeight.w700,fontSize: width*0.05
+               ),)),
+              SizedBox(height: height*0.02,),
+            Container(
+            height: height*0.07,
             width: width*0.5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(width*0.3),
-              color: ColorConstant.ten,
+              color: ColorConstant.fourColor,
             ),
             child: Center(
-              child: Text("Return To login",
-              style: TextStyle(
-                color: ColorConstant.secondColor
-              ),),
+              child: InkWell(
+                onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Signpage(),));},
+
+                child: Text("Return To login",
+                style: TextStyle(
+                  fontSize: width*0.04,
+                  color: ColorConstant.secondColor
+                ),),
+              ),
             ),
           ),
          ]

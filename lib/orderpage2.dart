@@ -111,6 +111,7 @@ class _Orderpage2State extends State<Orderpage2> {
               ),
             ),
           ),
+          SizedBox(height: width*0.04,),
           Container(
             height: height*0.1,
             width: width*0.94,

@@ -1,4 +1,5 @@
 import 'package:clot/constant/colorconstant.dart';
+import 'package:clot/signpage.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -12,6 +13,13 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    Future.delayed(Duration(
+        seconds: 4
+    )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Signpage(),)));
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstant.thirdColor,

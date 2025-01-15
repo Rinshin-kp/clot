@@ -16,13 +16,15 @@ class _WishlistpageState extends State<Wishlistpage> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back_ios_outlined),
-        title: Text('Wishlist',style: TextStyle(
-            fontWeight: FontWeight.w500
-        ),),),
+        title: Center(
+          child: Text('Wishlist',style: TextStyle(
+              fontWeight: FontWeight.w600
+          ),),
+        ),),
       body: Column(
         children: [
         Padding(
-          padding:  EdgeInsets.all(17),
+          padding:  EdgeInsets.all(width*0.06),
           child: Container(
           height: height*0.1,
           width: width*0.9,
@@ -52,6 +54,8 @@ class _WishlistpageState extends State<Wishlistpage> {
                       child: Text('My Favourite',
                       style: TextStyle(
                         fontWeight:FontWeight.w700,
+                          fontSize: width*0.05
+
                       ),),
                     ),
                     Text('12 Products',
@@ -63,7 +67,7 @@ class _WishlistpageState extends State<Wishlistpage> {
                 Row(
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(left:100 ),
+                      padding:  EdgeInsets.only(left:width*0.3),
                       child: Icon(Icons.arrow_forward_ios_rounded),
                     )
                   ],
@@ -71,11 +75,7 @@ class _WishlistpageState extends State<Wishlistpage> {
 
               ],
             ),
-
-
               ),
-          
-          
         ),
           Column(
             children: [
@@ -110,39 +110,32 @@ class _WishlistpageState extends State<Wishlistpage> {
                             child: Text('T-Shirts',
                               style: TextStyle(
                                 fontWeight:FontWeight.w700,
+                                fontSize: width*0.05
                               ),),
                           ),
                           Text('4 products',
                             style: TextStyle(
-                                fontWeight: FontWeight.w300
+                                fontWeight: FontWeight.w300,
+
                             ),),
                         ],
                       ),
                       Row(
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left:150),
+                            padding:  EdgeInsets.only(left:width*0.43),
                             child: Icon(Icons.arrow_forward_ios_rounded),
                           )
                         ],
                       )
-
                     ],
                   ),
-
-
                 ),
-
-
               ),
-
             ],
           ),
-
         ],
       ),
-
-
     );
   }
 }

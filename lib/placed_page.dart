@@ -51,7 +51,7 @@ body: Column(
           ),
           child: Center(child: Text("See Order Detailes",
             style: TextStyle(
-              fontSize: width*0.06,
+              fontSize: width*0.05,
               color: ColorConstant.secondColor
             ),
           ),

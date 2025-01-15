@@ -8,7 +8,6 @@ class Addresspage extends StatefulWidget {
   @override
   State<Addresspage> createState() => _AddresspageState();
 }
-
 class _AddresspageState extends State<Addresspage> {
   @override
   Widget build(BuildContext context) {
@@ -21,12 +20,12 @@ class _AddresspageState extends State<Addresspage> {
         ),)),
       ),
       body: Padding(
-        padding:  EdgeInsets.all(30),
+        padding:  EdgeInsets.all(width*0.05),
         child: Column(
           children: [
             Container(
               height: height*0.1,
-              width: width*0.9,
+              width: width*1,
               decoration: BoxDecoration(
                 color: ColorConstant.nineth,
                 borderRadius: BorderRadius.circular(8)
@@ -34,20 +33,22 @@ class _AddresspageState extends State<Addresspage> {
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('2715 Ash Dr shan jose,South'),
+                    padding:  EdgeInsets.all(width*0.06),
+                    child: Text('2715 Ash Dr shan jose,South....',
+                    style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                      fontSize: width*0.045
+                      ),),
                   ),
-                  SizedBox(),
-
+                  SizedBox(width: width*0.03,),
                   Text('Edit',
                   style: TextStyle(
                     color: ColorConstant.fourColor
                   ),)
                 ],
               ),
-
             ),
-            SizedBox(height: height*0.02,),
+            SizedBox(height: height*0.03,),
             Container(
               height: height*0.1,
               width: width*0.9,
@@ -58,18 +59,20 @@ class _AddresspageState extends State<Addresspage> {
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('2715 Ash Dr shan jose,South'),
+                    padding: EdgeInsets.all(width*0.06),
+                    child: Text('2715 Ash Dr shan jose,South...',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                          fontSize: width*0.045
+                      ),
+                    ),
                   ),
-                  SizedBox(),
-
+                  SizedBox(width: width*0.04,),
                   Text('Edit',
                     style: TextStyle(
                         color: ColorConstant.fourColor
-                    ),)
-                ],
+                    ),)],
               ),
-
             )
           ],
         ),

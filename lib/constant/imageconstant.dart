@@ -25,21 +25,24 @@ class ImageConstant {
   static const hoodi4="assets/images/Rectangle 8 (4).jpg";
   static const hoodi5="assets/images/Rectangle 8.jpg";
   static const hoodi6="assets/images/Rectangle 8 (5).jpg";
-static const woodies1="assets/images/hoodies-without-zip.jpg";
+ static const woodies1="assets/images/hoodies-without-zip.jpg";
 static const woodies2="assets/images/images (4).jpeg";
-static const prfl="assets/images/Ellipse 14.svg";
 static const ut1="assets/images/utwd1.png";
 static const ut2="assets/images/utw2.jpeg";
-// static const ut3="";
-// static const ut4="";
-// static const ut5="";
+static const jacket="assets/images/Rectangle 10.jpg";
+static const jacket1="assets/images/Rectangle 9 (1).jpg";
+static const jacket2="assets/images/Rectangle 8 (2).jpg";
+static const jacket3="assets/images/Rectangle 8 (6).jpg";
+static const ellipse="assets/images/Ellipse 13.jpg";
+static const men="assets/images/Rectangle 2.jpg";
+static const chappal="assets/images/Rectangle 7 (2).jpg";
+static const dwnld="assets/images/images (2).jpg";
 }
 class IconConstant{
   static const eye="asset/icons/quill_eye.svg";
-  static const apple="assets/icons/apple-color-svgrepo-com (1).svg";
-  static const google="assets/icons/google-logo-search-new.svg";
+  static const apple="assets/icons/apple-color.svg";
+  static const google="assets/icons/google-color-svgrepo-com.svg";
   static const facebook="assets/icons/facebook-color.svg";
   static const arrow="assets/arrowdown2.png";
-
-  static const pay="assets/images/Frame 30 (1).png";
+  static const circle="assets/icons/Frame 30.svg";
 }

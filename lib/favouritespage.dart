@@ -10,7 +10,6 @@ class Favouritespage extends StatefulWidget {
   @override
   State<Favouritespage> createState() => _FavouritespageState();
 }
-
 class _FavouritespageState extends State<Favouritespage> {
   List favourites=[
     {
@@ -58,7 +57,8 @@ class _FavouritespageState extends State<Favouritespage> {
                 ),
               )
               ),
-            ), GridView.builder(
+            ),
+            GridView.builder(
               itemCount:favourites.length,
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),

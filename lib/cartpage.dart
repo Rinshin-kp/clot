@@ -89,7 +89,7 @@ class _CartpageState extends State<Cartpage> {
                          ),
                            ],
                          ),
-        
+
                          Padding(
                            padding:  EdgeInsets.all(width*0.036),
                            child: Row(
@@ -169,6 +169,11 @@ class _CartpageState extends State<Cartpage> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: width*0.04,
                                   color: ColorConstant.grey
+                              ),),Text("Total",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: width*0.04,
+                                  color: ColorConstant.grey
                               ),),
                           ],
                         ),
@@ -193,14 +198,16 @@ class _CartpageState extends State<Cartpage> {
                             Text("\$0.00",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600),
+                            ) , Text("\$208",
+                              style: TextStyle(
+                                fontSize: width*0.05,
+                                  fontWeight: FontWeight.w800),
+
                             ) ,
-        
                           ],
-        
-        
                         ),
                       ),
-        
+
                     ))
               ],
             ),
@@ -238,15 +245,22 @@ class _CartpageState extends State<Cartpage> {
                  ),
                ),
              ),
-            Row(
-              mainAxisAlignment:  MainAxisAlignment.start,
-              children: [
-                Text("Total"),
-              ],
-            )
-          ],
+            Container(
+              height: height*0.06,
+              width: width*0.8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(width*0.3),
+                color: ColorConstant.fourColor,
         ),
+              child: Center(child: Text("Checkout",
+                style: TextStyle(
+                  fontSize: width*0.05,
+                  color: ColorConstant.secondColor
+                ),
+              )),
       ),
+   ])
+      )
     );
   }
 }

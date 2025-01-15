@@ -49,10 +49,10 @@ class _Order3pageState extends State<Order3page> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(width*0.1),
                     color: ColorConstant.nineth
-                  ),
+                        ),
                   child: Center(child: Text("Processing")),
-                ),
-                SizedBox(width: width*0.01,),
+                      ),
+                SizedBox(width: width*0.02,),
                 Container(
                   height: height*0.05,
                   width: width*0.3,
@@ -62,7 +62,7 @@ class _Order3pageState extends State<Order3page> {
                   ),
                   child: Center(child: Text("Shipped")),
                 ),
-                SizedBox(width: width*0.01,),
+                SizedBox(width: width*0.02,),
                 Container(
                   height: height*0.05,
                   width: width*0.3,
@@ -72,7 +72,7 @@ class _Order3pageState extends State<Order3page> {
                   ),
                   child: Center(child: Text("Delivered")),
                 ),
-                SizedBox(width: width*0.01,),
+                SizedBox(width: width*0.02,),
                 Container(
                   height: height*0.05,
                   width: width*0.3,
@@ -82,7 +82,7 @@ class _Order3pageState extends State<Order3page> {
                   ),
                   child: Center(child: Text("Returned")),
                 ),
-                SizedBox(width: width*0.01,),
+                SizedBox(width: width*0.02,),
                 Container(
                   height: height*0.05,
                   width: width*0.3,
@@ -96,7 +96,7 @@ class _Order3pageState extends State<Order3page> {
             ),
           ),
           ListView.separated(
-            itemCount: 3,
+            itemCount: process.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
            return Column(
@@ -118,13 +118,12 @@ class _Order3pageState extends State<Order3page> {
                      style: TextStyle(
                        fontSize: width*0.05
                      ),),
-                     Padding(
+                       Padding(
                        padding:  EdgeInsets.only( left:width*0.35),
                        child: Icon(Icons.arrow_forward_ios_rounded),
                      )
                    ],
-                 ),
-               ),
+                 ),),
              ],
            );
           }, separatorBuilder: (BuildContext context, int index) { return
