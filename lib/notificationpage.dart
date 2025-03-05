@@ -1,4 +1,5 @@
 import 'package:clot/constant/imageconstant.dart';
+import 'package:clot/notificationpage2.dart';
 import 'package:flutter/material.dart';
 
 import 'constant/colorconstant.dart';
@@ -52,11 +53,16 @@ class _NotificationpageState extends State<Notificationpage> {
               borderRadius: BorderRadius.circular(width*0.1),
               color: ColorConstant.ten,
             ),
-              child: Center(child: Text("Explore categories",
-              style: TextStyle(
-                  fontSize: width*0.05
-              ),
-            )),
+              child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Notificationpage2 (),));},
+                    child: Text("Explore categories",
+                                  style: TextStyle(
+                    fontSize: width*0.05
+                                  ),
+                                ),
+                  )),
           )
         ]
       )

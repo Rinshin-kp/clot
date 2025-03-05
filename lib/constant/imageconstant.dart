@@ -37,6 +37,9 @@ static const ellipse="assets/images/Ellipse 13.jpg";
 static const men="assets/images/Rectangle 2.jpg";
 static const chappal="assets/images/Rectangle 7 (2).jpg";
 static const dwnld="assets/images/images (2).jpg";
+static const jak="assets/images/Rectangle 10 (1).jpg";
+static const ellipse1 ="assets/images/Ellipse 15.jpg";
+static const ellipse2 ="assets/images/Ellipse 15 (1).jpg";
 }
 class IconConstant{
   static const eye="asset/icons/quill_eye.svg";

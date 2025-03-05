@@ -1,5 +1,6 @@
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
+import 'package:clot/jacketpage.dart';
 import 'package:clot/main.dart';
 import 'package:flutter/material.dart';
 
@@ -63,18 +64,23 @@ class _SearchpageState extends State<Searchpage> {
           ),
           SizedBox(
             height: height*0.03,),
-          Container(
-            height: height*0.07,
-            width: width*0.7,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(width*0.1),
-              color:ColorConstant.fourColor
-            ),
-            child: Center(child: Text("Explore Categories",
-              style: TextStyle(
-                fontSize: width*0.05,color: ColorConstant.secondColor
+          InkWell(
+            onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Jacketpage(),));
+            },
+            child: Container(
+              height: height*0.07,
+              width: width*0.7,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(width*0.1),
+                color:ColorConstant.fourColor
               ),
-            )),
+              child: Center(child: Text("Explore Categories",
+                style: TextStyle(
+                  fontSize: width*0.05,color: ColorConstant.secondColor
+                ),
+              )),
+            ),
           )
         ],
 

@@ -14,4 +14,6 @@ class ColorConstant {
   static const nineth=Color(0xffF4F4F4);
   static const ten=Color(0xff8E6CEF);
   static const red=Color(0xffFF0000);
+
+
 }

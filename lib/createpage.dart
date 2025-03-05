@@ -1,8 +1,13 @@
 import 'package:clot/agepage.dart';
+import 'package:clot/categories%20_page1.dart';
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/main.dart';
 import 'package:clot/signpage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'model/usermodel.dart';
 
 class Createpage extends StatefulWidget {
   const Createpage({super.key});
@@ -16,8 +21,49 @@ class _CreatepageState extends State<Createpage> {
   TextEditingController lastnameController= TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController PasswordController = TextEditingController();
+
   bool lock= true;
-  @override
+
+  userSignup() {
+    if (nameController.text == '') {
+      return ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("enter name"),));
+    }
+    if (PasswordController.text == '') {
+      return ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("enter password"),));
+    }
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text, password: PasswordController.text);
+    UserModel user = UserModel(name: nameController.text,
+        email: emailController.text,
+        lastname: lastnameController.text,
+        password: PasswordController.text,
+        id: '');
+    print(user.toMap());
+    FirebaseFirestore.instance.collection('users').add(user.toMap())
+        .then((value) => value.update(user.copyWith(id: value.id).toMap()));
+    }
+  addUserFunction() {
+    UserModel user = UserModel(
+        name: nameController.text,
+        email: emailController.text,
+        password: PasswordController.text,
+        id: "",
+        lastname: lastnameController.text
+    );
+    print(user.toMap());
+    FirebaseFirestore.instance
+        .collection('users')
+        .add(user.toMap())
+        .then((value) => value.update(user.copyWith(id: value.id).toMap()));
+//==========================
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => CategoriesPage1(name: '',)), (route) => false);
+  }catchError(error){
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter password"),));
+  }
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -122,31 +168,35 @@ class _CreatepageState extends State<Createpage> {
               ),
             ),
             Center(
-              child: Container(
-                height: height*0.07,
-                width:width*0.9,
-                decoration: BoxDecoration(
-                  borderRadius:  BorderRadius.circular(width*0.1),
-                  color: ColorConstant.thirdColor,
-                ),
-                child: Center(
-                    child: InkWell(
-                      onTap: () {
+                child: InkWell(
+                  onTap: () {
+                    userSignup();
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Agepage(),));},
-                      child: Text("Continue",
-                        style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: width*0.06,
-                        color: ColorConstant.secondColor
-                        ),
-                      ),
-                    )),
+                  child: Container(
+                    height: height*0.07,
+                    width:width*0.9,
+                    decoration: BoxDecoration(
+                      borderRadius:  BorderRadius.circular(width*0.1),
+                      color: ColorConstant.thirdColor,
+                    ),
+                    child: Center(
+                        child: Text("Continue",
+                          style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: width*0.06,
+                          color: ColorConstant.secondColor
+                          ),
+                        )),
+                  ),
+                ),
               ),
-            ),
-          ],
+
+             ],
         ),
       ),
 
     );
   }
 }
+
+

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'constant/colorconstant.dart';
 import 'main.dart';
+import 'notificationpage.dart';
 
 class Notificationpage2 extends StatefulWidget {
   const Notificationpage2({super.key});
@@ -24,45 +25,46 @@ class _Notificationpage2State extends State<Notificationpage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding:  EdgeInsets.all(width*0.2),
-            child: Center(
-              child: Text("Notifications",
-              style: TextStyle(
-                fontSize: width*0.06,
-                fontWeight: FontWeight.w600
+      appBar: AppBar(
+      title:   Center(
+        child: Text("Notifications",
+          style: TextStyle(
+          fontSize: width*0.06,
+          fontWeight: FontWeight.w600
+            ),),
               ),),
-            ),
-          ),
-          ListView.separated(
-            itemCount: bell.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-            return
-              Container(
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(width*0.04),
-                      child: Icon(Icons.notifications),
-                    ),
-                Text(bell[index]["text"],
-                ) ],
-                ),
-              height: height*0.1,
-              width: width*0.5,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(width*0.02),
-                  color: ColorConstant.nineth,
-              )
-              );
-          }, separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: height*0.01,
-              );
-          },)
-        ],
+      body: Padding(
+        padding:  EdgeInsets.all(width*0.05),
+        child: Column(
+          children: [
+            ListView.separated(
+              itemCount: bell.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+              return
+                Container(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(width*0.04),
+                        child: Icon(Icons.notifications),
+                      ),
+                  Text(bell[index]["text"],
+                  ) ],
+                  ),
+                height: height*0.1,
+                width: width*0.3,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(width*0.02),
+                    color: ColorConstant.nineth,
+                )
+                );
+            }, separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(height: height*0.01,
+                );
+            },)
+          ],
+        ),
       ),
     );
   }

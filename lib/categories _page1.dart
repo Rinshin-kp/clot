@@ -1,12 +1,18 @@
+import 'package:clot/categoriespage.dart';
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
+import 'package:clot/emptypage.dart';
+import 'package:clot/hoddiepage.dart';
+import 'package:clot/ratingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'main.dart';
 
 class CategoriesPage1 extends StatefulWidget {
-  const CategoriesPage1({super.key});
+  final String name;
+  const CategoriesPage1({super.key, required this.name,});
 
   @override
   State<CategoriesPage1> createState() => _CategoriesPage1State();
@@ -14,6 +20,11 @@ class CategoriesPage1 extends StatefulWidget {
 
 class _CategoriesPage1State extends State<CategoriesPage1> {
   TextEditingController searchController = TextEditingController();
+  List sex=['Men', 'Women'];
+  String SelectText= "Men";
+  var dropdown=["Men","Women"];
+  String? dropDownValue;
+
   List categori=[
     {
   "img": ImageConstant.hoodies,
@@ -87,6 +98,14 @@ List men =[
 }
 ];
 bool love =false;
+  getUserName()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    currentUserName = prefs.get(('user name'));
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,35 +116,50 @@ bool love =false;
         ),
         title:  Center(
           child: Container(
-            height: height*0.06,
-            width: width*0.26,
+            height: height*0.05,
+            width: width*0.3,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(width*0.1),
+                borderRadius: BorderRadius.circular(width*0.2),
                 color: ColorConstant.grey
             ),
             child: Row(
               children: [
-                Padding(
+           DropdownButton(
+            icon: Icon(Icons.keyboard_arrow_down_rounded,
+                size: width*0.09
+            ),
+             hint: Padding(
+               padding:  EdgeInsets.all(width*0.03),
+               child: Text("Men ${widget.name}"),
+             ),
+             value: dropDownValue,
+            items: dropdown.map((String item) {
+              return DropdownMenuItem(
+                value: item,
+                child: Padding(
                   padding:  EdgeInsets.all(width*0.03),
-                  child: Text("Men",
-                    style: TextStyle(
-                        fontSize: width*0.05,
-                        color: ColorConstant.secondColor
-                    ),),
+                  child: Text(item),
                 ),
-                Icon(Icons.keyboard_arrow_down_rounded,
-                  size: width*0.1,
-                  color: ColorConstant.secondColor,
-                ),
-              ],
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              setState(() {
+                dropDownValue = newValue; // Update the selected value
+              });
+            },
+          ) ],
             ),
           ),
         ) ,
         actions: [
-          CircleAvatar(
-            backgroundColor: ColorConstant.fourColor,
-            radius: width*0.09,
-            child: Icon(Icons.lock,
+          InkWell(onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>Emptypage() ,));
+          },
+            child: CircleAvatar(
+              backgroundColor: ColorConstant.fourColor,
+              radius: width*0.09,
+              child: Icon(Icons.shopping_cart_outlined,
+              ),
             ),
           )
         ],
@@ -170,11 +204,15 @@ bool love =false;
                       fontWeight: FontWeight.w600
                     ),
                   ),
-                  Text("See all",
-                    style: TextStyle(
-                        fontSize: width*0.06,
-                        fontWeight: FontWeight.w600
-                    ),)
+                  InkWell(
+                    onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>Categoriespage (),));},
+                    child: Text("See all",
+                      style: TextStyle(
+                          fontSize: width*0.06,
+                          fontWeight: FontWeight.w600
+                      ),),
+                  )
                 ]
               ),
             ),
@@ -211,10 +249,14 @@ bool love =false;
                   fontSize: width*0.05,
                   fontWeight: FontWeight.w600
                 ),),
-                  Text("See All", style: TextStyle(
-                      fontSize: width*0.05,
-                      fontWeight: FontWeight.w600
-                  ),)
+                  InkWell(
+                    onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>Hoddiepage (),));},
+                    child: Text("See All", style: TextStyle(
+                        fontSize: width*0.05,
+                        fontWeight: FontWeight.w600
+                    ),),
+                  )
                 ],
               ),
             ),
@@ -227,28 +269,35 @@ bool love =false;
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                 return Column(
-                   children: [
-                     Container(
-                       height: height*0.4,
-                       width: width*0.62,
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(width*0.05),
-                         color: ColorConstant.nineth,
-                         image: DecorationImage(image: AssetImage(men[index]["img"]), fit: BoxFit.cover
+                 return InkWell(
+                   onTap: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => RatingPage(
+                         name:men[index]["text"],
+                         image: men[index]["img"],
+                         price: men[index]["price"],
+                       )));},
+                   child: Column(
+                     children: [
+                       Container(
+                         height: height*0.4,
+                         width: width*0.60,
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(width*0.05),
+                           color: ColorConstant.nineth,
+                           image: DecorationImage(image: AssetImage(men[index]["img"]), fit: BoxFit.cover
+                           ),
                          ),
                        ),
-                     ),
-
-                     Text(men[index]["text"], style: TextStyle(
-                         fontSize: width*0.05
+                       Text(men[index]["text"], style: TextStyle(
+                           fontSize: width*0.05
+                         ),
                        ),
-                     ),
-                     Text(men[index]["price"],style: TextStyle(
-                       fontWeight: FontWeight.w600
-                     ),
-                     ),
-                   ],
+                       Text(men[index]["price"],style: TextStyle(
+                         fontWeight: FontWeight.w600
+                       ),
+                       ),
+                     ],
+                   ),
                  );
                },
                 separatorBuilder: (BuildContext context, int index) {return
@@ -282,32 +331,40 @@ bool love =false;
               height: height*0.5,
               width: width*4,
               child: ListView.separated(
-                itemCount: men.length,
+                itemCount: jacket.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        height: height*0.4,
-                        width: width*0.62,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(width*0.05),
-                          color: ColorConstant.nineth,
-                          image: DecorationImage(image: AssetImage(jacket[index]["img"]),fit: BoxFit.cover
+                  return InkWell(
+                    onTap:  () {
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => RatingPage(
+                       name:jacket[index]["text"],
+                        image: jacket[index]["img"],
+                         price: jacket[index]["price"],
+                           )));},
+                    child: Column(
+                      children: [
+                        Container(
+                          height: height*0.4,
+                          width: width*0.60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(width*0.05),
+                            color: ColorConstant.nineth,
+                            image: DecorationImage(image: AssetImage(jacket[index]["img"]),fit: BoxFit.cover
+                            ),
                           ),
                         ),
-                      ),
-                      Text(jacket[index]["text"], style: TextStyle(
-                          fontSize: width*0.05
-                      ),
-                      ),
-                      Text(jacket[index]["price"],style: TextStyle(
-                          fontWeight: FontWeight.w600
-                      ),
-                      ),
+                        Text(jacket[index]["text"], style: TextStyle(
+                            fontSize: width*0.05
+                        ),
+                        ),
+                        Text(jacket[index]["price"],style: TextStyle(
+                            fontWeight: FontWeight.w600
+                        ),
+                        ),
 
-                    ],
+                      ],
+                    ),
                   );
 
                 },

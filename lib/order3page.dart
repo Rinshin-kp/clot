@@ -1,4 +1,5 @@
 import 'package:clot/constant/colorconstant.dart';
+import 'package:clot/orderpage2.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -25,13 +26,20 @@ class _Order3pageState extends State<Order3page> {
       "text1":"4items"
     }
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+             },
+            child: Icon(Icons.arrow_back_ios_new)),),
       body: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.all(width*0.2),
+            padding:  EdgeInsets.all(width*0.04),
             child: Center(child: Text("Order",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
@@ -95,35 +103,42 @@ class _Order3pageState extends State<Order3page> {
               ],
             ),
           ),
+          SizedBox(height: height*0.04,),
           ListView.separated(
             itemCount: process.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
            return Column(
              children: [
-               Container(
-                 height: height*0.1,
-                 width: width*0.96,
-                 decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(width*0.04),
-                     color: ColorConstant.nineth
-                 ),
-                 child: Row(
-                   children: [
-                     Padding(
-                       padding:  EdgeInsets.all(width*0.05),
-                       child: Icon(Icons.message_outlined),
-                     ),
-                     Text(process[index]["text"],
-                     style: TextStyle(
-                       fontSize: width*0.05
-                     ),),
+               InkWell(
+                 onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => Orderpage2(
+                     name: process[index]["text"],),));
+                 },
+                 child: Container(
+                   height: height*0.1,
+                   width: width*0.96,
+                   decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(width*0.04),
+                       color: ColorConstant.nineth
+                   ),
+                   child: Row(
+                     children: [
                        Padding(
-                       padding:  EdgeInsets.only( left:width*0.35),
-                       child: Icon(Icons.arrow_forward_ios_rounded),
-                     )
-                   ],
-                 ),),
+                         padding:  EdgeInsets.all(width*0.05),
+                         child: Icon(Icons.message_outlined),
+                       ),
+                       Text(process[index]["text"],
+                       style: TextStyle(
+                         fontSize: width*0.05
+                       ),),
+                         Padding(
+                         padding:  EdgeInsets.only( left:width*0.35),
+                         child: Icon(Icons.arrow_forward_ios_rounded),
+                       )
+                     ],
+                   ),),
+               ),
              ],
            );
           }, separatorBuilder: (BuildContext context, int index) { return

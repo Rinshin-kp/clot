@@ -1,6 +1,8 @@
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
 import 'package:clot/main.dart';
+import 'package:clot/order3page.dart';
+
 import 'package:flutter/material.dart';
 
 class Orderpage extends StatefulWidget {
@@ -37,8 +39,7 @@ class _OrderpageState extends State<Orderpage> {
               image: DecorationImage(image: AssetImage(ImageConstant.check)            ),
           )
           ),
-          SizedBox(height: height*0.02
-              ),
+          SizedBox(height: height*0.02),
           Text("No orders yet",
               style: TextStyle(
                 fontSize: width*0.06
@@ -46,18 +47,22 @@ class _OrderpageState extends State<Orderpage> {
           ),
           SizedBox(height: height*0.03
           ),
-          Container(
-            height: height*0.08,
-            width: width*0.53,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(width*0.1),
-               color: ColorConstant.ten,
-            ),
-            child: Center(child: Text("Explore categories",
-              style: TextStyle(
-                fontSize: width*0.05
+          InkWell(
+            onTap: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context) =>Order3page(),));},
+            child: Container(
+              height: height*0.08,
+              width: width*0.53,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(width*0.1),
+                 color: ColorConstant.ten,
               ),
-            )),
+              child: Center(child: Text("Explore categories",
+                style: TextStyle(
+                  fontSize: width*0.05
+                ),
+              )),
+            ),
           )
         ],
 

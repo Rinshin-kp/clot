@@ -1,6 +1,7 @@
 import 'package:clot/constant/imageconstant.dart';
 import 'package:flutter/material.dart';
 
+import 'categories _page1.dart';
 import 'constant/colorconstant.dart';
 import 'main.dart';
 
@@ -13,6 +14,8 @@ class Hoddiepage extends StatefulWidget {
 
 class _HoddiepageState extends State<Hoddiepage> {
   bool love=false;
+  List fav = [];
+
   @override
   List hoodies=[
     {
@@ -46,7 +49,10 @@ class _HoddiepageState extends State<Hoddiepage> {
   Widget build(BuildContext context) {
     return Scaffold(
 appBar: AppBar(
-  leading: Icon(Icons.arrow_back_ios_new),
+  leading: InkWell(
+    onTap: () {
+      Navigator.pop(context);},
+      child: Icon(Icons.arrow_back_ios_new)),
 ),
       body: SingleChildScrollView(
         child: Column(
@@ -72,52 +78,59 @@ appBar: AppBar(
                   mainAxisExtent: width*1
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Stack(
-                        children:[
-                          Container(
-                            height: height*0.47,
-                            width: width*0.6,
-                            decoration: BoxDecoration(
-                                color: ColorConstant.nineth,
-                                borderRadius: BorderRadius.circular(width*0.04),
-                                image: DecorationImage(image: AssetImage(hoodies[index]["img"]),
-                                )
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(hoodies[index]["text"],
-                                  style: TextStyle(
-                                      fontSize: width*0.04
-                                  ),),
-                                Text("${hoodies[index]['price']}",
-                                  style: TextStyle(
-                                      fontSize: width*0.05,
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),],
-                            ),
-                          ),
-                          Positioned(
-                            right:width*0.04,
-                            top: height*0.02,
-                            child:InkWell(
-                              onTap: () {
-                                love=!love;
-                                setState(() {
-                                });
-                              },
-                              child: Icon(Icons.favorite,
-                                color: love?ColorConstant.primaryColor:ColorConstant.red,
+                return InkWell(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(
+                          children:[
+                            Container(
+                              height: height*0.47,
+                              width: width*0.6,
+                              decoration: BoxDecoration(
+                                  color: ColorConstant.nineth,
+                                  borderRadius: BorderRadius.circular(width*0.04),
+                                  image: DecorationImage(image: AssetImage(hoodies[index]["img"]),
+                                  )
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(hoodies[index]["text"],
+                                    style: TextStyle(
+                                        fontSize: width*0.04
+                                    ),),
+                                  Text("${hoodies[index]['price']}",
+                                    style: TextStyle(
+                                        fontSize: width*0.05,
+                                        fontWeight: FontWeight.w600
+                                    ),
+                                  ),],
                               ),
                             ),
-                          ),
-                        ]
-                    ),
-                  ],
+                            Positioned(
+                              right:width*0.04,
+                              top: height*0.02,
+                              child:InkWell(
+                                onTap: () {
+                                  if( fav.contains(hoodies[index])){
+                                    fav.remove(hoodies[index]);
+                                  }else{
+                                    fav.add(hoodies[index]);
+                                  }
+                                  setState(() {
+                                  });
+                                },
+                                child: Icon(Icons.favorite,
+                                  color: fav.contains(hoodies[index])?ColorConstant.primaryColor:ColorConstant.red,
+                                ),
+
+                              )
+                            ),
+                          ]
+                      ),
+                    ],
+                  ),
                 );
               },
             )],

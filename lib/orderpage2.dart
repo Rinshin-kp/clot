@@ -2,9 +2,13 @@ import 'package:clot/constant/colorconstant.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
+import 'order3page.dart';
 
 class Orderpage2 extends StatefulWidget {
-  const Orderpage2({super.key});
+  final  String name;
+  const Orderpage2({super.key,
+    required this.name
+  });
 
   @override
   State<Orderpage2> createState() => _Orderpage2State();
@@ -31,16 +35,19 @@ class _Orderpage2State extends State<Orderpage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-     backgroundColor: ColorConstant.nineth,
-        leading: Icon(Icons.arrow_back_ios_new_rounded),
-      ),
+        appBar: AppBar(
+          leading: InkWell(
+            onTap: () {
+            Navigator.pop(context) ;
+            },
+              child: Icon(Icons.arrow_back_ios_new )),
+          ),
       body: Column(
         children: [
           Center(child: Padding(
             padding:  EdgeInsets.all(width*0.07),
-            child: Text("Order #456765",
-            style: TextStyle(
+            child: Text(widget.name,
+                style: TextStyle(
               fontSize: width*0.06,
               fontWeight: FontWeight.w600
             )
@@ -87,15 +94,15 @@ class _Orderpage2State extends State<Orderpage2> {
             height: height*0.1,
             width: width*0.94,
             decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(width*0.02),
-    color: ColorConstant.nineth
+           borderRadius: BorderRadius.circular(width*0.02),
+           color: ColorConstant.nineth
      ),
       child: Row(
         children: [
           Padding(
             padding: EdgeInsets.all(width*0.06),
             child: Icon(Icons.filter_frames_outlined),
-          ),
+          ), 
           Text("4 Items"),
           SizedBox(width: width*0.4,),
           Text("View All"),

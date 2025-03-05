@@ -1,4 +1,5 @@
 import 'package:clot/constant/colorconstant.dart';
+import 'package:clot/favouritespage.dart';
 import 'package:clot/main.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,10 @@ class _WishlistpageState extends State<Wishlistpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios_outlined),
+        leading: InkWell(onTap: () {
+          Navigator.pop(context);
+        },
+            child: Icon(Icons.arrow_back_ios_outlined)),
         title: Center(
           child: Text('Wishlist',style: TextStyle(
               fontWeight: FontWeight.w600
@@ -35,7 +39,7 @@ class _WishlistpageState extends State<Wishlistpage> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(8.0),
                   child: InkWell(onTap: () {
                     Love=!Love;
                     setState(() {
@@ -68,7 +72,10 @@ class _WishlistpageState extends State<Wishlistpage> {
                   children: [
                     Padding(
                       padding:  EdgeInsets.only(left:width*0.3),
-                      child: Icon(Icons.arrow_forward_ios_rounded),
+                      child: InkWell(onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Favouritespage(),));
+                      },
+                          child: Icon(Icons.arrow_forward_ios_rounded)),
                     )
                   ],
                 )
@@ -92,7 +99,8 @@ class _WishlistpageState extends State<Wishlistpage> {
                     children: [
                       Padding(
                         padding:  EdgeInsets.all(8.0),
-                        child: InkWell(onTap: () {
+                        child: InkWell(
+                          onTap: () {
                           Love=!Love;
                           setState(() {
 

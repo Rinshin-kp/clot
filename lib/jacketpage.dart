@@ -11,6 +11,11 @@ class Jacketpage extends StatefulWidget {
 }
 class _JacketpageState extends State<Jacketpage> {
   TextEditingController searchcontroller= TextEditingController();
+  List fav = [];
+  bool a =false;
+  bool b= false;
+
+
   List Jacket=[
     {
       "img":ImageConstant.jacket,
@@ -34,7 +39,10 @@ class _JacketpageState extends State<Jacketpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: InkWell(onTap: () {
+          Navigator.pop(context);
+        },
+            child: Icon(Icons.arrow_back_ios_new)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -236,7 +244,8 @@ class _JacketpageState extends State<Jacketpage> {
                                        width: width*0.9,
                                        decoration: BoxDecoration(
                                            borderRadius: BorderRadius.circular(width*0.07),
-                                           color: ColorConstant.grey
+                                           color: a?ColorConstant.fourColor:ColorConstant.grey
+
                                        ),
                                        child: Padding(
                                          padding:  EdgeInsets.all(width*0.05),
@@ -252,8 +261,8 @@ class _JacketpageState extends State<Jacketpage> {
                                );
                            },);},
                             child: Icon(Icons.keyboard_arrow_down_rounded,
-                             size: width*0.09,
-                             color: ColorConstant.secondColor
+                              color: b?ColorConstant.fourColor:ColorConstant.grey,
+                              size: width*0.09,
                          ),
                        ) ],
                    ),
@@ -550,12 +559,16 @@ class _JacketpageState extends State<Jacketpage> {
                             top: height*0.02,
                             child:InkWell(
                               onTap: () {
-                                love=!love;
+                                if( fav.contains(Jacket[index])){
+                                  fav.remove(Jacket[index]);
+                                }else{
+                                  fav.add(Jacket[index]);
+                                }
                                 setState(() {
                                 });
                               },
-                              child: Icon(Icons.favorite_border,
-                                color: love?ColorConstant.primaryColor:ColorConstant.red,
+                              child: Icon(Icons.favorite,
+                                color: fav.contains(Jacket[index])?ColorConstant.primaryColor:ColorConstant.red,
                               ),
 
                             ),

@@ -29,11 +29,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           children: [
             Text("CLOT",
              style: TextStyle(
-               fontSize: width*0.2,
+               fontSize: width*0.1,
                color: ColorConstant.sixthColor
              ),
             ),
-            CircularProgressIndicator()
+
 
           ],
         ),

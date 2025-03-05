@@ -1,3 +1,4 @@
+import 'package:clot/addcard.dart';
 import 'package:clot/constant/imageconstant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +19,10 @@ class _PaymentpageState extends State<Paymentpage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios),
+          leading: InkWell(onTap: () {
+            Navigator.pop(context);
+          },
+              child: Icon(Icons.arrow_back_ios)),
           title: Center(child: Text('Payment',
             style: TextStyle(
               fontWeight: FontWeight.w600
@@ -52,7 +56,10 @@ class _PaymentpageState extends State<Paymentpage> {
                   ),),
                   SvgPicture.asset(IconConstant.circle) ,
                   SizedBox(width: height*0.22,),
-                  Icon(Icons.arrow_forward_ios)
+                  InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Addcard(),));
+                  },
+                      child: Icon(Icons.arrow_forward_ios))
                 ],
               ),
             ),
@@ -72,7 +79,11 @@ class _PaymentpageState extends State<Paymentpage> {
                   ),),
                   SvgPicture.asset(IconConstant.circle) ,
                   SizedBox(width: height*0.22,),
-                  Icon(Icons.arrow_forward_ios)
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Addcard(),));
+                      },
+                      child: Icon(Icons.arrow_forward_ios))
                 ],
               ),
             ),

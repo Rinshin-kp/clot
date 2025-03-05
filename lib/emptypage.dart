@@ -18,7 +18,10 @@ class _EmptypageState extends State<Emptypage> {
       backgroundColor: ColorConstant.secondColor,
       appBar: AppBar(
         backgroundColor: ColorConstant.secondColor,
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: InkWell(onTap: () {
+          Navigator.pop(context);
+        },
+            child: Icon(Icons.arrow_back_ios_new)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -37,18 +40,22 @@ class _EmptypageState extends State<Emptypage> {
             ),
           ),
           SizedBox(height: height*0.04),
-          Container(
-            height: height*0.08,
-            width: width*0.8,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(width*0.1),
-              color:ColorConstant.fourColor
-            ),
-            child: Center(
-              child: Text("Explore Categories",
-                style: TextStyle(
-                  fontSize: width*0.05,
-                  color: ColorConstant.secondColor
+          InkWell(onTap: () {
+
+          },
+            child: Container(
+              height: height*0.08,
+              width: width*0.8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(width*0.1),
+                color:ColorConstant.fourColor
+              ),
+              child: Center(
+                child: Text("Explore Categories",
+                  style: TextStyle(
+                    fontSize: width*0.05,
+                    color: ColorConstant.secondColor
+                  ),
                 ),
               ),
             ),
@@ -58,3 +65,84 @@ class _EmptypageState extends State<Emptypage> {
     );
   }
 }
+
+//
+//
+//
+
+//
+// class ProductSearchScreen extends StatefulWidget {
+//   @override
+//   _ProductSearchScreenState createState() => _ProductSearchScreenState();
+// }
+//
+// class _ProductSearchScreenState extends State<ProductSearchScreen> {
+//   final TextEditingController _searchController = TextEditingController();
+//   List<String> products = [
+//     'Hoodie',
+//     'Shoes',
+//     'Jacket',
+//     'Bag',
+//     'Shorts',
+//     'Accessories'
+//   ];
+//   List<String> filteredProducts = [];
+//
+//   void _searchProduct(String query) {
+//     setState(() {
+//       if (query.isEmpty) {
+//         filteredProducts = [];
+//       } else {
+//         filteredProducts = products
+//             .where((product) => product.toLowerCase().contains(query.toLowerCase()))
+//             .toList();
+//         filteredProducts.sort();
+//       }
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.black,
+//       appBar: AppBar(
+//         backgroundColor: Colors.black,
+//         title: TextField(
+//           controller: _searchController,
+//           onChanged: _searchProduct,
+//           style: TextStyle(color: Colors.white),
+//           decoration: InputDecoration(
+//             hintText: 'Search...',
+//             hintStyle: TextStyle(color: Colors.white70),
+//             border: InputBorder.none,
+//           ),
+//         ),
+//       ),
+//       body: filteredProducts.isNotEmpty
+//           ? ListView.builder(
+//         itemCount: filteredProducts.length,
+//         itemBuilder: (context, index) {
+//           return ListTile(
+//             title: Text(
+//               filteredProducts[index],
+//               style: TextStyle(color: Colors.white),
+//             ),
+//           );
+//         },
+//       )
+//           : Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Icon(Icons.search_off, color: Colors.white, size: 50),
+//             SizedBox(height: 10),
+//             Text(
+//               'No item found',
+//               style: TextStyle(color: Colors.white, fontSize: 18),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

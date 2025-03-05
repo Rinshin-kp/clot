@@ -1,8 +1,10 @@
 import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/constant/imageconstant.dart';
+import 'package:clot/searchpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'categories _page1.dart';
 import 'main.dart';
 
 class Categoriespage extends StatefulWidget {
@@ -38,7 +40,11 @@ class _CategoriespageState extends State<Categoriespage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios_new_sharp),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(Icons.arrow_back_ios_new_sharp)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -83,10 +89,15 @@ class _CategoriespageState extends State<Categoriespage> {
             ),
             Padding(
               padding:  EdgeInsets.only(right: width*0.26),
-              child: Text("Shop by Categories",
-                style: TextStyle(
-                  fontSize: width*0.07,
-                  fontWeight: FontWeight.w600
+              child: InkWell(
+                onTap:  () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>Searchpage(),));
+                },
+                child: Text("Shop by Categories",
+                  style: TextStyle(
+                    fontSize: width*0.07,
+                    fontWeight: FontWeight.w600
+                  ),
                 ),
               ),
             ),

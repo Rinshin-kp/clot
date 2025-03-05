@@ -37,6 +37,8 @@ class _FavouritespageState extends State<Favouritespage> {
     },
   ];
   bool love=false;
+  List fav = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,12 +104,16 @@ class _FavouritespageState extends State<Favouritespage> {
                             top: height*0.02,
                             child:InkWell(
                               onTap: () {
-                                love=!love;
+                               if( fav.contains(favourites[index])){
+                                 fav.remove(favourites[index]);
+                               }else{
+                                 fav.add(favourites[index]);
+                               }
                                 setState(() {
                                 });
                               },
                               child: Icon(Icons.favorite,
-                                color: love?ColorConstant.primaryColor:ColorConstant.red,
+                                color: fav.contains(favourites[index])?ColorConstant.primaryColor:ColorConstant.red,
                               ),
 
                             ),

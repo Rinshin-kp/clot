@@ -18,16 +18,18 @@ class _CartpageState extends State<Cartpage> {
       "img": ImageConstant.image2,
       "text":"Men's Harrington jacket",
       "text1": "Size- M  Color - Lemon",
-      "text2":"\$148"
+      "text2":"\$148",
+     "qty"   :1,
     },
     {
       "img":ImageConstant.image1,
       "text":"Men's coaches jacket",
       "text1": "Size- M  Color - Balck",
-      "text2": "\$52.00"
+      "text2": "\$52.00",
+      "qty": 1,
     }
     ];
-  int count=0;
+  int count=1;
   int  text=0;
   @override
   Widget build(BuildContext context) {
@@ -111,14 +113,19 @@ class _CartpageState extends State<Cartpage> {
                                        SizedBox(width:width*0.03),
                                        InkWell(
                                          onTap:  () {
-                                           count++;
+                                           image[index]["qty"]++;
                                            setState(() {
                                            });
                                          },
                                          child: InkWell(
                                            onTap:  () {
-                                             count<=0?0:count;
+                                            image[index]["qty"]++;
+                                            setState(() {
+                                              }
+                                            );
                                            },
+
+
                                            child: CircleAvatar(
                                              backgroundColor: Colors.blue,
                                                child: Icon(Icons.remove,
@@ -211,7 +218,7 @@ class _CartpageState extends State<Cartpage> {
                     ))
               ],
             ),
-            SizedBox(height: height*0.05,),
+            SizedBox(height: height*0.03,),
              Container(
                height: height*0.2,
                width: width*0.95,

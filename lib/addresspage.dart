@@ -2,6 +2,8 @@ import 'package:clot/constant/colorconstant.dart';
 import 'package:clot/main.dart';
 import 'package:flutter/material.dart';
 
+import 'addpage.dart';
+
 class Addresspage extends StatefulWidget {
   const Addresspage({super.key});
 
@@ -13,7 +15,10 @@ class _AddresspageState extends State<Addresspage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios_outlined),
+        leading: InkWell(onTap: () {
+          Navigator.pop(context);
+        },
+            child: Icon(Icons.arrow_back_ios_outlined)),
         title: Center(child: Text('Address',
         style: TextStyle(
           fontWeight:FontWeight.w500
@@ -41,10 +46,14 @@ class _AddresspageState extends State<Addresspage> {
                       ),),
                   ),
                   SizedBox(width: width*0.03,),
-                  Text('Edit',
-                  style: TextStyle(
-                    color: ColorConstant.fourColor
-                  ),)
+                  InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder:  (context) => Addpage(),));
+                  },
+                    child: Text('Edit',
+                    style: TextStyle(
+                      color: ColorConstant.fourColor
+                    ),),
+                  )
                 ],
               ),
             ),
