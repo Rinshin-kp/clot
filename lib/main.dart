@@ -15,6 +15,9 @@ import 'package:clot/firebase/add_firbase_page.dart';
 import 'package:clot/firebase/authentication2_login.dart';
 import 'package:clot/firebase/authentication_page.dart';
 import 'package:clot/firebase/delet_firebase2.dart';
+import 'package:clot/firebase/new_page.dart';
+import 'package:clot/firebase/new_page2.dart';
+import 'package:clot/firebase/newpage3.dart';
 import 'package:clot/firebase/update_firebase3.dart';
 import 'package:clot/firebase/get_firebase4.dart';
 import 'package:clot/firebase/firebase5.dart';
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     height=MediaQuery.of(context).size.height;
     return MaterialApp(
-      home:Authentication2Login(
+      home: NewPage(
       ),
       debugShowCheckedModeBanner: false,
     );

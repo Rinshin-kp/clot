@@ -43,7 +43,6 @@ class _Firebase4State extends State<Firebase4> {
             itemCount: datas.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-
               return Container(
                 height: height * 0.1,
                 width: width * 0.9,

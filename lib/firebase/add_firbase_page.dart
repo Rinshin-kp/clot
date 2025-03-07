@@ -103,7 +103,6 @@ await FirebaseFirestore.instance.collection("User").add(student.toMap()).then((v
             GestureDetector(
               onTap: () {
                 add();
-                Navigator.pop(context);
               },
               child: Container(
                 height: height*0.07,
